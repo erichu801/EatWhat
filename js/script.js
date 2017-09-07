@@ -16,9 +16,11 @@ $(document).ready(function() {
 				'lon': position.coords.longitude
 			},
 			success: function(result) {
-				console.log(result);
-				$text = JSON.stringify(result);
-				$('#result').append($text);
+				
+				$numRes = result.nearby_restaurants.length;
+				$idx = Math.floor(Math.random() * $numRes);
+
+				$('#result').append(result.nearby_restaurants[$idx].restaurant.name);
 			}
 		});
 	}
